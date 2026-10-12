@@ -1,244 +1,139 @@
+<!-- Tugas 4 -->
 <!DOCTYPE html>
-<html lang="id">
+<html lang="id" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Katalog Artis - Music Hub</title>
+    <title>Jockie</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
+        body {
+            background-color: #0d1117 !important;
+            color: #ffffff !important;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        body {
-            background-color: #0f172a;
-            color: #f8fafc;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .navbar {
-            background-color: #020617;
-            border-bottom: 1px solid #1e293b;
-            padding: 16px 0;
-            margin-bottom: 32px;
-        }
-
-        .container {
-            width: 100%;
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .navbar-brand {
-            font-size: 20px;
-            font-weight: 700;
-            color: #ef4444;
-            text-decoration: none;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-
-        .nav-link {
-            color: #94a3b8;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: #f8fafc;
-        }
-
-        .card {
-            background-color: #1e293b;
-            border: 1px solid #334155;
+        .card-custom {
+            background-color: #161b22 !important;
+            border: 1px solid #30363d !important;
             border-radius: 12px;
-            padding: 24px;
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-            margin-bottom: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
         }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 20px;
+        .text-cyan {
+            color: #38bdf8 !important;
         }
-
-        .btn {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 500;
-            text-decoration: none;
-            cursor: pointer;
-            border: 1px solid #334155;
-            color: #f8fafc;
-            background-color: transparent;
-            transition: all 0.2s;
+        .btn-cyan {
+            background-color: #0284c7 !important;
+            color: #ffffff !important;
+            border: 1px solid #38bdf8 !important;
+            font-weight: 600;
         }
-
-        .btn:hover {
-            background-color: #334155;
+        .btn-cyan:hover {
+            background-color: #0369a1 !important;
+            color: #ffffff !important;
         }
-
-        .btn-danger {
-            border-color: rgba(239, 68, 68, 0.4);
-            color: #ef4444;
+        .table-custom {
+            color: #ffffff !important;
+            margin-bottom: 0;
         }
-
-        .btn-danger:hover {
-            background-color: rgba(239, 68, 68, 0.15);
+        .table-custom th {
+            background-color: #0d1117 !important;
+            color: #38bdf8 !important;
+            border-bottom: 2px solid #38bdf8 !important;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.05em;
         }
-
-        .badge {
-            display: inline-block;
-            padding: 4px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-            font-weight: 500;
-            background-color: rgba(239, 68, 68, 0.15);
-            color: #ef4444;
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            margin-bottom: 12px;
+        .table-custom td {
+            background-color: #161b22 !important;
+            color: #ffffff !important;
+            border-color: #30363d !important;
+            vertical-align: middle;
         }
-
-        .list-group {
-            list-style: none;
-            border: 1px solid #334155;
-            border-radius: 8px;
-            overflow: hidden;
-            margin-bottom: 24px;
-        }
-
-        .list-item {
-            padding: 12px 16px;
-            background-color: #0f172a;
-            border-bottom: 1px solid #334155;
-            font-size: 14px;
-        }
-
-        .list-item:last-child {
-            border-bottom: none;
-        }
-
-        .bio-box {
-            background-color: #0f172a;
-            padding: 16px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            line-height: 1.6;
-            margin-bottom: 24px;
-            color: #cbd5e1;
-        }
-
-        .card-actions {
-            display: flex;
-            gap: 8px;
-            margin-top: 16px;
-            padding-top: 16px;
-            border-top: 1px solid #334155;
-        }
-
-        .text-secondary { color: #94a3b8; }
-        .fw-bold { font-weight: 700; }
-        .alert {
-            padding: 16px;
-            border-radius: 8px;
-            background-color: rgba(239, 68, 68, 0.1);
-            border: 1px solid rgba(239, 68, 68, 0.3);
-            color: #ef4444;
-            text-align: center;
+        .badge-cyan {
+            background-color: rgba(56, 189, 248, 0.2) !important;
+            color: #7dd3fc !important;
+            border: 1px solid #38bdf8 !important;
         }
     </style>
 </head>
-<body>
-
-    <nav class="navbar">
-        <div class="container nav-container">
-            <a class="navbar-brand" href="/songs">🎵 MusicHub</a>
-            <div class="nav-links">
-                <a class="nav-link" href="/songs">Lagu</a>
-                <a class="nav-link active" href="/artists">Artis</a>
-                <a class="nav-link" href="/playlists">Playlist</a>
-            </div>
-        </div>
-    </nav>
-
+<body class="py-5">
     <div class="container">
-        <h2 style="margin-bottom: 24px;">Katalog Artis</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <div>
+                <h2 class="fw-bold text-white mb-1"><i class="fa-solid fa-music me-2 text-cyan"></i>Jockie Studio</h2>
+                <p class="text-secondary mb-0">Manajemen data artis dan musisi studio</p>
+            </div>
+            <a href="{{ route('artists.create') }}" class="btn btn-cyan px-4 py-2 rounded-3">
+                <i class="fa-solid fa-plus me-2"></i>Tambah Band / Musisi
+            </a>
+        </div>
 
-        @if(isset($artist))
-            @if($artist)
-                <div class="card">
-                    <div style="display: flex; align-items: center; gap: 16px; margin-bottom: 16px;">
-                        <div style="width: 50px; height: 50px; background-color: rgba(239, 68, 68, 0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 20px;">
-                            🎤
-                        </div>
-                        <div>
-                            <h2 class="fw-bold">{{ $artist['name'] }}</h2>
-                            <small class="text-secondary">{{ $artist['origin'] }} • <span style="color: #ef4444;">{{ $artist['genre'] }}</span></small>
-                        </div>
-                    </div>
-
-                    <div class="bio-box">
-                        {{ $artist['bio'] }}
-                    </div>
-
-                    @if(isset($tracks))
-                        <h4 style="margin-bottom: 12px; color: #ef4444;">Top Tracks</h4>
-                        <ul class="list-group">
-                            @foreach($tracks as $track)
-                                <li class="list-item">🎵 {{ $track }}</li>
-                            @endforeach
-                        </ul>
-                    @elseif(isset($albums))
-                        <h4 style="margin-bottom: 12px; color: #ef4444;">Daftar Album</h4>
-                        <ul class="list-group">
-                            @foreach($albums as $album)
-                                <li class="list-item">💿 {{ $album }}</li>
-                            @endforeach
-                        </ul>
-                    @endif
-
-                    <a href="/artists" class="btn">← Kembali ke Daftar Artis</a>
-                </div>
-            @else
-                <div class="alert">Artis tidak ditemukan.</div>
-            @endif
-
-        @elseif(isset($artists))
-            <div class="grid">
-                @foreach($artists as $item)
-                <div class="card" style="display: flex; flex-direction: column; justify-content: space-between; margin-bottom: 0;">
-                    <div>
-                        <h3 class="fw-bold" style="margin-bottom: 4px; font-size: 18px;">{{ $item['name'] }}</h3>
-                        <span class="badge">{{ $item['genre'] }}</span>
-                        <p class="text-secondary" style="font-size: 13px; line-height: 1.5;">{{ Str::limit($item['bio'], 90) }}</p>
-                    </div>
-                    <div class="card-actions">
-                        <a href="/artists/{{ $item['id'] }}" class="btn">Bio</a>
-                        <a href="/artists/{{ $item['id'] }}/top-tracks" class="btn btn-danger">Top Tracks</a>
-                        <a href="/artists/{{ $item['id'] }}/albums" class="btn">Album</a>
-                    </div>
-                </div>
-                @endforeach
+        @if(session('success'))
+            <div class="alert alert-success bg-dark border-info text-info alert-dismissible fade show mb-4" role="alert">
+                <i class="fa-solid fa-circle-check me-2"></i>{{ session('success') }}
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="alert"></button>
             </div>
         @endif
+
+        <div class="card card-custom">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <table class="table table-custom mb-0">
+                        <thead>
+                            <tr>
+                                <th class="text-center py-3">No</th>
+                                <th class="py-3">Nama Band</th>
+                                <th class="py-3">Genre</th>
+                                <th class="py-3">Label Rekaman</th>
+                                <th class="text-center py-3">Tahun Debut</th>
+                                <th class="text-center py-3">Aksi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @forelse($artists as $key => $artist)
+                                <tr>
+                                    <td class="text-center fw-bold text-cyan">{{ $key + 1 }}</td>
+                                    <td class="fw-bold text-white">{{ $artist->stage_name }}</td>
+                                    <td>
+                                        <span class="badge badge-cyan px-3 py-2 rounded-pill fw-semibold">
+                                            {{ $artist->genre->name ?? '-' }}
+                                        </span>
+                                    </td>
+                                    <td>
+                                        <span class="badge badge-cyan px-3 py-2 rounded-pill fw-semibold">
+                                            {{ $artist->labelRecord->name ?? 'Independen' }}
+                                        </span>
+                                    </td>
+                                    <td class="text-center text-white fw-medium">{{ $artist->debut_year }}</td>
+                                    <td class="text-center">
+                                        <a href="{{ route('artists.edit', $artist->id) }}" class="btn btn-sm btn-outline-info me-1">
+                                            <i class="fa-solid fa-pen-to-square"></i>
+                                        </a>
+                                        <form action="{{ route('artists.destroy', $artist->id) }}" method="POST" class="d-inline" onsubmit="return confirm('Hapus data musisi ini?')">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                                <i class="fa-solid fa-trash"></i>
+                                            </button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            @empty
+                                <tr>
+                                    <td colspan="6" class="text-center py-5 text-secondary">
+                                        <i class="fa-solid fa-compact-disc fa-3x mb-3 d-block text-cyan"></i>
+                                        Belum ada data musisi yang tersimpan.
+                                    </td>
+                                </tr>
+                            @endforelse
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
